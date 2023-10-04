@@ -7,6 +7,8 @@ import morgan from "morgan";
 
 // files
 import testRoutes from "./routes/testRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import errorMiddleware from "./middleware/errorMiddleware.js";
 
 // conofig
 dotenv.config();
@@ -19,10 +21,10 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.send("<h1>Test Route</h1>");
-});
-app.use("/api/v1", testRoutes);
+// Routes
+app.use("/api/v1/test", testRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
