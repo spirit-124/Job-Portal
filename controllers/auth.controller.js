@@ -1,5 +1,5 @@
 import userModel from "../models/userModel.js";
-import bcrypt from "../models/bcrypt.js";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const registerController = async (req, res, next) => {
@@ -15,7 +15,7 @@ export const registerController = async (req, res, next) => {
     if (!email) {
       next("email is required");
     }
-    const salt = await bcrypt.gensalt(10);
+    const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     req.body.password = hashedPassword;
 
@@ -32,7 +32,9 @@ export const registerController = async (req, res, next) => {
         { expiresIn: "1h" }
       );
 
-      res.status(200).send({ message: "User created", success: true, newUser });
+      res
+        .status(200)
+        .send({ message: "User created", success: true, newUser, token });
     } else {
       next("User already registered");
     }
@@ -41,8 +43,8 @@ export const registerController = async (req, res, next) => {
   }
 };
 
-export const login = async (req, res) => {
-  const [email, password] = req.body;
+export const loginController = async (req, res) => {
+  const { email, password } = req.body;
   try {
     if (!email || !password) {
       next("please provide all details");
@@ -60,7 +62,7 @@ export const login = async (req, res) => {
             username: user.username,
             id: user._id,
           },
-          JWT_SECRET,
+          process.env.JWT_SECRET,
           { expiresIn: "1h" }
         );
         res.status(200).json({ user, token });
@@ -69,6 +71,7 @@ export const login = async (req, res) => {
       res.status(401).send({ message: "User not found" });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Auth Failed", error: error });
   }
 };

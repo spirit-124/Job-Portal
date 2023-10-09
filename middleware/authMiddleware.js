@@ -1,19 +1,19 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-const secret = process.env.JWT_SECRET;
 const authMiddleware = async (req, res, next) => {
+  const secret = process.env.JWT_SECRET;
   try {
     const token = req.headers.authorization.split(" ")[1];
-    console.log(token);
 
     if (token) {
       const decoded = jwt.verify(token, secret);
       console.log(decoded);
-      req.body._id = decoded?.id;
+      req.user = { userId: decoded.userId };
     }
     next();
   } catch (error) {
+    console.log(error);
     next("Auth Failed");
   }
 };
