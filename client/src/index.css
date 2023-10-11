@@ -1,0 +1,85 @@
+/* 
+--------------------
+    color codes
+--------------------
+#a08c5b - light golden (Logo)
+#181510 - Black
+#d4af37 - dark Golden
+#e9dbbd - lighter       
+*/
+
+/* ======= CSS RESET =======  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Background styles */
+body {
+  
+  /* background-position: center; */
+  background: "#00cea8";
+    background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+    background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+    min-height: 100vh;
+    height: 100%;
+}
+
+/* Glassmorphism card effect */
+.card {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 12px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100vh;
+  
+}
+.form-label{
+  font-size: 1.1rem;
+  color: aqua;
+  
+}
+.form-control{
+  background-position: center;
+  backdrop-filter: blur(72px) saturate(180%);
+    background: "#00cea8";
+    background: linear-gradient(90.13deg, #4d9688 1.9%, #703c90 97.5%);
+    background: -webkit-linear-gradient(-90.13deg,#4d9688 1.9%,
+      #703c90 97.5%);
+}
+
+.not-found{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  height: 100%;
+}
+/* 
+.form-card{
+  background: #56ccf2;
+  background-position: center;
+  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to top,
+      #2f80ed,
+      #56ccf2); */
+  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to top,
+      #2f80ed,
+      #56ccf2); */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;} */ 
