@@ -43,9 +43,9 @@ const LoginPage = () => {
   return (
     <>
       {loading ? (
-        // <Spinner />
-        <h1>Loading</h1>
+        <Spinner />
       ) : (
+        // <h1>Loading</h1>
         <div className="form-container ">
           <form className="card form-card   " onSubmit={handleSubmit}>
             <div className="d-flex justify-content-center">
