@@ -43,7 +43,8 @@ const LoginPage = () => {
   return (
     <>
       {loading ? (
-        <Spinner />
+        // <Spinner />
+        <h1>Loading</h1>
       ) : (
         <div className="form-container ">
           <form className="card form-card   " onSubmit={handleSubmit}>

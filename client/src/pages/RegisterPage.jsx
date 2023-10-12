@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { logo } from "../assets";
 
 const Register = () => {
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,14 +25,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!name || !lastName || !email || !password) {
+      if (!username || !lastName || !email || !password) {
         return toast.error("Please Provide All Fields");
       }
       dispatch(showLoading());
       const { data } = await axios.post(
         "http://localhost:8000/api/v1/auth/register",
         {
-          name,
+          username,
           lastName,
           email,
           password,
@@ -70,7 +70,7 @@ const Register = () => {
               htmlFor="name"
               labelText={"Name"}
               type={"text"}
-              value={name}
+              value={username}
               handleChange={(e) => setName(e.target.value)}
               name="name"
               placeholder="Enter Your Name"

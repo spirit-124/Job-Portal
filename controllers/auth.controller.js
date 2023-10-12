@@ -43,7 +43,7 @@ export const registerController = async (req, res, next) => {
   }
 };
 
-export const loginController = async (req, res) => {
+export const loginController = async (req, res, next) => {
   const { email, password } = req.body;
   try {
     if (!email || !password) {
@@ -65,7 +65,9 @@ export const loginController = async (req, res) => {
           process.env.JWT_SECRET,
           { expiresIn: "1h" }
         );
-        res.status(200).json({ user, token });
+        res
+          .status(200)
+          .json({ success: true, message: "Login SUccessfully", user, token });
       }
     } else {
       res.status(401).send({ message: "User not found" });
